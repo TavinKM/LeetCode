@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Sync
-        uses: joshcai/leetcode-sync@v1.5
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Sync Submissions with READMEs
+        uses: Raphael-Sch/leetcode-synchronizer@v1
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          destination-folder: my-folder
-          verbose: true
-          commit-header: '[LeetCode Sync]'
+
